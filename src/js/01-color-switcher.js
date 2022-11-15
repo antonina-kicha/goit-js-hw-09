@@ -9,17 +9,14 @@ let timerId = null;
 
 startBtn.addEventListener('click', changeColor);
 function changeColor() {
-    if (startBtn.classList.contains('onClick')) {
-        return;
-    }
+    startBtn.setAttribute('disabled', '')
     timerId = setInterval(() => { body.style.backgroundColor = getRandomHexColor()}, 1000);
-    startBtn.classList.add('onClick')
     console.log(timerId);
 }
 
 stoptBtn.addEventListener('click', () => {
     clearInterval(timerId);
-    startBtn.classList.remove('onClick')
+    startBtn.removeAttribute('disabled')
 });
 
 
