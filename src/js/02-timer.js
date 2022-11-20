@@ -1,10 +1,9 @@
 // Библиотека flatpickr
-const flatpickr = require("flatpickr");
+// const flatpickr = require("flatpickr");
 import flatpickr from "flatpickr";
 // Дополнительный импорт стилей
 import "flatpickr/dist/flatpickr.min.css";
 // Библиотека для уведомлений
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Notiflix from 'notiflix';
 
 
