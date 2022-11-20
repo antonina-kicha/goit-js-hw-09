@@ -4,7 +4,8 @@ import flatpickr from "flatpickr";
 // Дополнительный импорт стилей
 import "flatpickr/dist/flatpickr.min.css";
 // Библиотека для уведомлений
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
 
 // функция для подсчета значений из милисекунд
@@ -67,7 +68,7 @@ const options = {
         checkDate = selectedDates[0] - currentdate;
         if (checkDate < 0) {
             // window.alert("Please choose a date in the future");
-            Notify.failure('Please choose a date in the future');
+            Notiflix.Notify.failure('Please choose a date in the future');
             startBtn.setAttribute('disabled', '')
             return;
         }

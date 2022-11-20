@@ -1,4 +1,5 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
 
 const btn = document.querySelector('[type="submit"]');
@@ -48,8 +49,8 @@ function createPromise(position, delay) {
   }}, delay)
   })
   promise
-    .then(resolve => Notify.success(resolve))
-    .catch(reject => Notify.failure(reject))
+    .then(resolve => Notiflix.Notify.success(resolve))
+    .catch(reject => Notiflix.Notify.failure(reject))
   
 }
 
