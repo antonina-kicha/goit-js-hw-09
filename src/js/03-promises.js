@@ -9,7 +9,7 @@ const stepEl = document.querySelector('[name="step"]');
 const amountEl = document.querySelector('[name="step"]');
 
 parentForm.addEventListener('change', getParametr)
-btn.addEventListener('click', arrCreatePromise)
+btn.addEventListener('click', onClick)
 
 //сохраняю введенные данные
 let parametr = {
@@ -28,29 +28,29 @@ function getParametr(evt) {
   console.log(parametr);
 }
 
+// Создание промиса
+
+function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldResolve) {resolve({ position, delay})}
+      else { reject({ position, delay})}
+    }, delay)
+         
+  })
+}
+
 // Запуск цикла для создания массива промисов
-function arrCreatePromise() {
+function onClick(event) {
+  event.preventDefault();
   for (let i = 1; i <= parametr.amount; i += 1)
   {
     createPromise(i, parametr.delay)
+      .then(({ position, delay }) => Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay} ms`))
+      .catch(({ position, delay }) => Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay} ms`));
     parametr.delay += parametr.step;
   }
 }
 
-function createPromise(position, delay) {
-  event.preventDefault();
-  const shouldResolve = Math.random() > 0.3;
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (shouldResolve) {
-    resolve(`Fulfilled promis ${position} in ${delay}ms`)
-  } else {
-      reject(`Rejected promis ${position} in ${delay}ms`);
-  }}, delay)
-  })
-  promise
-    .then(resolve => Notiflix.Notify.success(resolve))
-    .catch(reject => Notiflix.Notify.failure(reject))
-  
-}
 
